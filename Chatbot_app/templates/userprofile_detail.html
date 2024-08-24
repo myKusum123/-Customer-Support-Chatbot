@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>User Profile Detail</h2>
+    <div class="card mt-3">
+        <div class="card-header">
+            <img src="{{ profile.avatar.url }}" alt="Avatar" class="img-thumbnail" style="width: 150px;">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ profile.user.email }}</h5>
+            <p class="card-text">{{ profile.bio }}</p>
+            <a href="{% url 'userprofile_update' profile.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'userprofile_delete' profile.pk %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'userprofile_list' %}" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

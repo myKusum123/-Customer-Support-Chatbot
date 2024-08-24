@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat Messages{% endblock %}
+
+{% block content %}
+<h2>Chat Messages</h2>
+<a href="{% url 'chatmessage_create' %}" class="btn btn-primary mb-3">Create New Message</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Message</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.message_text }}</td>
+                <td>{{ message.timestamp }}</td>
+                <td>
+                    <a href="{% url 'chatmessage_detail' message.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'chatmessage_update' message.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'chatmessage_delete' message.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

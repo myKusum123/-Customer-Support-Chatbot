@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>User Profiles</h2>
+    <table class="table table-hover mt-3">
+        <thead class="thead-light">
+            <tr>
+                <th>Avatar</th>
+                <th>User</th>
+                <th>Bio</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+            <tr>
+                <td><img src="{{ profile.avatar.url }}" alt="Avatar" class="img-thumbnail" style="width: 50px;"></td>
+                <td>{{ profile.user.email }}</td>
+                <td>{{ profile.bio|truncatewords:10 }}</td>
+                <td>
+                    <a href="{% url 'userprofile_detail' profile.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'userprofile_update' profile.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'userprofile_delete' profile.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'userprofile_create' %}" class="btn btn-success">Create New Profile</a>
+</div>
+{% endblock %}

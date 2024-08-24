@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Bot Configurations{% endblock %}
+
+{% block content %}
+<h2>Bot Configurations</h2>
+<a href="{% url 'botconfig_create' %}" class="btn btn-primary mb-3">Create New Config</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Configuration Name</th>
+            <th>Configuration Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for config in configs %}
+            <tr>
+                <td>{{ config.config_name }}</td>
+                <td>{{ config.config_value }}</td>
+                <td>
+                    <a href="{% url 'botconfig_detail' config.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'botconfig_update' config.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'botconfig_delete' config.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

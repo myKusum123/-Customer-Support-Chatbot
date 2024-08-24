@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat Message{% endblock %}
+
+{% block content %}
+<h2>Chat Message Details</h2>
+<p><strong>Message:</strong> {{ message.message_text }}</p>
+<p><strong>Timestamp:</strong> {{ message.timestamp }}</p>
+<a href="{% url 'chatmessage_update' message.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'chatmessage_delete' message.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'chatmessage_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+<h2>Feedback Details</h2>
+<p><strong>User:</strong> {{ feedback.user }}</p>
+<p><strong>Message:</strong> {{ feedback.message }}</p>
+<p><strong>Timestamp:</strong> {{ feedback.timestamp }}</p>
+<a href="{% url 'feedback_update' feedback.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'feedback_delete' feedback.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'feedback_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}

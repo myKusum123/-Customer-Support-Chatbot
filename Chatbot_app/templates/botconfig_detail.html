@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Bot Configuration{% endblock %}
+
+{% block content %}
+<h2>Bot Configuration Details</h2>
+<p><strong>Name:</strong> {{ config.config_name }}</p>
+<p><strong>Value:</strong> {{ config.config_value }}</p>
+<a href="{% url 'botconfig_update' config.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'botconfig_delete' config.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'botconfig_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}
+

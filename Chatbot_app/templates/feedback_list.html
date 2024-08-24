@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+<h2>Feedback</h2>
+<a href="{% url 'feedback_create' %}" class="btn btn-primary mb-3">Submit Feedback</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Message</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.user }}</td>
+                <td>{{ feedback.message }}</td>
+                <td>{{ feedback.timestamp }}</td>
+                <td>
+                    <a href="{% url 'feedback_detail' feedback.pk %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'feedback_update' feedback.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'feedback_delete' feedback.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
